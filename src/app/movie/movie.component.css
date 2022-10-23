@@ -1,0 +1,18 @@
+.delete{
+    border: none;
+    border-radius: 4px;
+    background-color: brown;
+    color: white;
+}
+
+.update{
+    border: none;
+    border-radius: 4px;
+    background-color: orange;
+    color: white;
+}
+
+.description{
+    color: grey;
+    font-size: 16px;
+}
