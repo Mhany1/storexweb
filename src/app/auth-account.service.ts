@@ -8,15 +8,15 @@ import { Observable } from 'rxjs';
 })
 export class AuthAccountService {
 
-  constructor(private http:HttpClient) { }
-  loginUrl:string = 'https://test-api.storexweb.com/api/login'
-  registerUrl:string = 'https://test-api.storexweb.com/api/register'
-  
-  login(data:any):Observable <any>{
-   return this.http.post(this.loginUrl,data)
+  constructor(private http: HttpClient) { }
+  loginUrl: string = 'https://test-api.storexweb.com/api/login'
+  registerUrl: string = 'https://test-api.storexweb.com/api/register'
+
+  login(data: any): Observable<any> {
+    return this.http.post(this.loginUrl, data)
   }
 
-  register(data:any):Observable <any>{
-    return this.http.post(this.registerUrl,data)
-   }
+  register(data: any): Observable<any> {
+    return this.http.post(this.registerUrl, data)
+  }
 }

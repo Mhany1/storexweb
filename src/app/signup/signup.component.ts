@@ -10,10 +10,10 @@ import { AuthAccountService } from '../auth-account.service';
 })
 export class SignupComponent implements OnInit {
 
-  constructor(private fb:FormBuilder,private router: Router,private auth :AuthAccountService) { }
+  constructor(private fb: FormBuilder, private router: Router, private auth: AuthAccountService) { }
 
   loginForm = this.fb.group({
-    email : ['',  [Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
+    email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
     password: ['', [Validators.required]],
     name: ['', [Validators.required]]
   })
@@ -21,39 +21,28 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  get email(){
+  get email() {
     return this.loginForm.get('email')
-   }
-   get password(){
+  }
+  get password() {
     return this.loginForm.get('password')
-   }
-   get name(){
+  }
+  get name() {
     return this.loginForm.get('name')
-   }
- 
-  //  signup(f: any){
-  //   const email= f.form.controls.email.value;
-  //   const pass= f.form.controls.password.value;
-  //   const name= f.form.controls.name.value;
-    // this.authService.SignUp(email,pass,name);
-  // }
+  }
+
 
   sign() {
     console.log(this.email?.value, this.password?.value);
 
 
-    this.auth.register({ email: this.email?.value, password: this.password?.value,name:this.name?.value }).subscribe(res => {  
-      if (res.status === 'success') {  
+    this.auth.register({ email: this.email?.value, password: this.password?.value, name: this.name?.value }).subscribe(res => {
+      if (res.status === 'success') {
         localStorage.setItem('token', res.authorisation.token)
         this.router.navigate(['/movies'])
       } else {
         this.router.navigate(['/signup'])
       }
-
-    },error=> alert('Something went wrong'))
-    
-    
+    }, error => alert('Something went wrong'))
   }
-    
-
 }

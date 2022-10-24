@@ -1,5 +1,4 @@
 import { TestBed } from '@angular/core/testing';
-
 import { AuthAccountService } from './auth-account.service';
 
 describe('AuthAccountService', () => {

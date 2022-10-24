@@ -1,18 +1,53 @@
-.delete{
+.delete {
     border: none;
     border-radius: 4px;
     background-color: brown;
     color: white;
 }
 
-.update{
+.delete:hover {
+    background-color: rgba(165, 42, 42, 0.808);
+}
+
+.update {
     border: none;
     border-radius: 4px;
     background-color: orange;
     color: white;
 }
 
-.description{
+.update:hover {
+    background-color: rgba(255, 166, 0, 0.801);
+}
+
+.description {
     color: grey;
     font-size: 16px;
+}
+
+.buttoms {
+    display: flex;
+    justify-content: space-between;
+}
+
+.add {
+    border: none;
+    border-radius: 4px;
+    background-color: #008600;
+    color: white;
+    padding: 7px;
+    font-weight: bold;
+}
+
+.add:hover {
+    background-color: #016101;
+}
+
+.logout {
+    border: none;
+    border-radius: 4px;
+    background-color: darkred;
+    color: white;
+    padding: 7px;
+    font-weight: bold;
 }

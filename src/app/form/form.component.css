@@ -1,0 +1,24 @@
+.submit {
+    border: none;
+    border-radius: 5px;
+    background-color: #008600;
+    color: white;
+    padding: 3px;
+}
+
+.submit:hover {
+    background-color: #016101;
+}
+
+.photo {
+    border: none;
+    border-radius: 5px;
+    background-color: #7ac27a;
+    color: white;
+    padding: 3px;
+}
+
+.file {
+    display: flex;
+    justify-content: center;
+}

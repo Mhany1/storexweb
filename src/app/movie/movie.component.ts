@@ -9,119 +9,46 @@ import { MovieService } from '../movie.service';
 })
 export class MovieComponent implements OnInit {
 
-  constructor(private movieservice:MovieService,private activatedRoute:ActivatedRoute,private route:Router) { 
-    this.id = this.activatedRoute.snapshot.paramMap.get('id')
-  }
+  constructor(private movieservice: MovieService, private activatedRoute: ActivatedRoute, private route: Router) { }
 
-  movies:any[] = []
-  id:any
-  category:any[] = []
-  category1:any[] = []
- 
-  
+  movies: any[] = []
+  id: any
+  name: string = ''
+  file: any
+  category: any[] = []
+  category1: any[] = []
 
   ngOnInit(): void {
     this.movieservice.getData().subscribe(res => {
-       this.movies = res.message
-       console.log(this.movies);
+      this.movies = res.message
     })
 
-   
-     this.movieservice.getDataCategory().subscribe(data => {
-        this.category = data.message
-        console.log(this.category);
-        
-      })
-    
-      if (!localStorage.getItem('token')) {
-        this.route.navigate(['/login'])
-      }
-   
+    if (!localStorage.getItem('token')) {
+      this.route.navigate(['/login'])
+    }
   }
 
   onChange(event: { target: { files: File[]; }; }) {
     this.file = event.target.files[0];
-}
-
-  filter(value:string){
-   this.category1=this.movies.filter(p => p.name === value)
-   console.log(this.category1); 
   }
 
- 
-  
-  deleteMovie()
-  {
-    this.movieservice.deleteItem(this.id)
+  filter(value: string) {
+    this.category1 = this.movies.filter(p => p.name === value)
+    console.log(this.category1);
   }
 
-  // updateMovie()
-  // {
-  //   this.movieservice.updateItem(this.id)
-  // }
-
-  addMovie()
-  {
-    this.movieservice.addItem()
+  getName(name: string) {
+    this.name = name
+  }
+  getFile(event: any) {
+    this.file = event.target.files[0]
   }
 
-  //************************************************* */
-
-val1:any
-des:any
-fil:any
-ngAfterViewInit(): void {
- this.val1 = localStorage.getItem('name')
- this.des = localStorage.getItem('description')
- this.fil = localStorage.getItem('file')
-}
-
-name:string=''
-file:any
-  getName(name:string){
-   this.name=name
-  }
-  getFile(event:any){
-   this.file=event.target.files[0]
-  //  console.log(this.file);
+  updateData(id: number, movie: any) {
+    localStorage.setItem('movieData', JSON.stringify(movie))
   }
 
-  submitData() {
-    const formData = new FormData();
-    formData.append("image", this.file);
-    formData.append("name", this.name);
-    formData.append("description", 'dfdfdfd');
-    formData.append("category_id", '86');
-    let body = {
-      name: this.val1,
-      description:this.des,
-      image:this.fil,
-      category_id: 88,
-    }
-    
-
-    this.movieservice.postData(body)
-      .subscribe(response => {
-        console.log(response)
-      })
-  }
-
-  updateData(id:number,movie:any) {
-    localStorage.setItem('movieData',JSON.stringify(movie))
-    // let body = {
-    //   name: 'noha',
-    //   description:'fgfgfgfgfg',
-    //   // image:event?.target.files[0],
-    //   category_id: 87,
-    // }
-
-    // this.movieservice.updateData(body, id)
-    //   .subscribe(response => {
-    //     console.log(response)
-    //   })
-  }
-
-  delete(id:number) {
+  delete(id: number) {
     this.movieservice.deleteData(id)
       .subscribe(response => {
         console.log(response);
@@ -129,10 +56,12 @@ file:any
     this.ngOnInit()
   }
 
-  logout(){
+  logout() {
     localStorage.clear()
     this.route.navigate(['/login'])
-
   }
 
+  clearData() {
+    localStorage.removeItem('movieData');
+  }
 }

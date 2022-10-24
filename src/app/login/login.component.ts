@@ -28,26 +28,16 @@ export class LoginComponent implements OnInit {
   }
 
   logIn() {
-    console.log(this.email?.value, this.password?.value);
-
-
     this.auth.login({ email: this.email?.value, password: this.password?.value }).subscribe(res => {
-      console.log(res);
-      
-      if (res.status === 'success') {  
+      if (res.status === 'success') {
         localStorage.setItem('token', res.authorisation.token)
         this.route.navigate(['/movies'])
       } else {
         this.route.navigate(['/signup'])
       }
-
-    },error=> this.route.navigate(['/signup']))
-    
-    
+    }, error => this.route.navigate(['/signup']))
   }
-    
-  }
+}
 
 
 
-  

@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MovieComponent } from './movie/movie.component';
 import { FormComponent } from './form/form.component';
-import { DataComponent } from './data/data.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 
@@ -16,7 +15,6 @@ import { SignupComponent } from './signup/signup.component';
     AppComponent,
     MovieComponent,
     FormComponent,
-    DataComponent,
     LoginComponent,
     SignupComponent
   ],

@@ -1,20 +1,27 @@
+<div class="container mt-5">
+    <h2 class="text-center mt-2">Data Movie</h2>
+    <div>
+        <input value={{movieName}} class="form-control w-50 mb-3 mt-3 mx-auto " type="text"
+            (change)="getName(name.value)" placeholder="Name Of Movie" #name>
+        <input value={{movieDescription}} class="form-control w-50 mb-3 mx-auto" type="text"
+            (change)="getDescription(description.value)" placeholder="Description Of Movie" #description>
+        <div class="file mb-3">
+            <label class="me-5 mt-1 text-secondary">Movie Photo</label>
+            <input class="mb-0 photo" type="file" (change)="getFile($event);selectImage()">
+        </div>
 
-<div class="container">
-    <div class="">
-    <input value={{movieName}} class="form-control w-50 mb-3 mt-5 mx-auto " type="text" (change)="getName(name.value)" placeholder="Name Of Movie" #name>
-    <input value={{movieName}} class="form-control w-50 mb-3 mx-auto" type="text"(change)="getDescription(description.value)"placeholder="Description Of Movie" #description>
-    <input  class="mb-0 " type="file" style="position: relative;left: 28rem;" (change)="getFile($event);selectImage()">
-   
-<form class="form-group w-50 mx-auto">
-    <div class="form-group w-100 ">
-        <label for="exampleSelect1" class="form-label mt-4">Category:</label>
-        <select class="form-select" id="exampleSelect1">
-            <!-- <option disabled selected value="All">All</option> -->
-          <option value="{{option.id}}" *ngFor="let option of category" #option>{{option.name}}</option>
-        </select>
-    </div>
-<button  (click)="submitData()" type="submit" style="display: flex;justify-content: center;align-items: center;">Submit</button>
-</form>
+        <form class="form-group w-50 mx-auto">
+            <div class="form-group w-100 ">
+                <select class="form-select" id="exampleSelect1" [(ngModel)]="selectedOption" name="catrgory"
+                    (change)="getCategory()">
+                    <option value='{{option.id}}' *ngFor="let option of category" #option>{{option.name}}</option>
+                </select>
+            </div>
+            <br>
+            <button class="w-100 submit" (click)="submitData()" type="submit"
+                style="display: flex;justify-content: center;align-items: center;">Submit</button>
+        </form>
+        <p class="text-center text-secondary font-weight-bold mt-2" routerLink="/movies" style="cursor: pointer;">Go Back</p>
 
     </div>
 

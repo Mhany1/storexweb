@@ -6,10 +6,12 @@ import { MovieComponent } from './movie/movie.component';
 import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
-  {path:'movies',component:MovieComponent},
-  {path:'form',component:FormComponent},
-  {path:'login',component:LoginComponent},
-  {path:'signup',component:SignupComponent},
+  { path: 'movies', component: MovieComponent },
+  { path: 'form', component: FormComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: '', component: LoginComponent },
+  { path: '**', component: LoginComponent },
 ];
 
 @NgModule({
